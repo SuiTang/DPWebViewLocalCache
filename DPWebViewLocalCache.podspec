@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "DPWebViewLocalCache"
-s.version      = "1.1.1"
+s.version      = "1.1.2"
 s.ios.deployment_target = '7.0'
 s.summary      = "A delightful setting interface framework."
 s.homepage     = "https://github.com/xiayuqingfeng/DPWebViewLocalCache"

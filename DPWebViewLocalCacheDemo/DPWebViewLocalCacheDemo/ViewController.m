@@ -26,12 +26,14 @@
                                                                  modeTybe:DOWNLOAD_MODE
                                                              subDirectory:@"dir"];
     [NSURLCache setSharedURLCache:urlCache];
+    [self.myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://blog.csdn.net/u012460084/article/details/52668741"]]];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
     DPLocalCache *urlCache = (DPLocalCache *)[NSURLCache sharedURLCache];
     [urlCache removeAllCachedResponses];
 }

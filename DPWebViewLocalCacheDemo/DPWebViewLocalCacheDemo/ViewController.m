@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DPLocalCache.h"
 
 @interface ViewController ()
 
@@ -17,12 +18,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    DPLocalCache *urlCache = [[DPLocalCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
+                                                             diskCapacity:200 * 1024 * 1024
+                                                                 diskPath:nil
+                                                                cacheTime:0
+                                                                 modeTybe:DOWNLOAD_MODE
+                                                             subDirectory:@"dir"];
+    [NSURLCache setSharedURLCache:urlCache];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    DPLocalCache *urlCache = (DPLocalCache *)[NSURLCache sharedURLCache];
+    [urlCache removeAllCachedResponses];
 }
 
 

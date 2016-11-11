@@ -15,6 +15,9 @@
 		FD40F6501DD595A10038AC4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD40F64E1DD595A10038AC4A /* LaunchScreen.storyboard */; };
 		FD40F65B1DD595A10038AC4A /* DPWebViewLocalCacheDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F65A1DD595A10038AC4A /* DPWebViewLocalCacheDemoTests.m */; };
 		FD40F6661DD595A10038AC4A /* DPWebViewLocalCacheDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F6651DD595A10038AC4A /* DPWebViewLocalCacheDemoUITests.m */; };
+		FD40F67A1DD597B50038AC4A /* DPLocalCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F6751DD597B50038AC4A /* DPLocalCache.m */; };
+		FD40F67B1DD597B50038AC4A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F6771DD597B50038AC4A /* Reachability.m */; };
+		FD40F67C1DD597B50038AC4A /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F6791DD597B50038AC4A /* Tool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		FD40F6611DD595A10038AC4A /* DPWebViewLocalCacheDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DPWebViewLocalCacheDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD40F6651DD595A10038AC4A /* DPWebViewLocalCacheDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPWebViewLocalCacheDemoUITests.m; sourceTree = "<group>"; };
 		FD40F6671DD595A10038AC4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD40F6741DD597B50038AC4A /* DPLocalCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLocalCache.h; sourceTree = "<group>"; };
+		FD40F6751DD597B50038AC4A /* DPLocalCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLocalCache.m; sourceTree = "<group>"; };
+		FD40F6761DD597B50038AC4A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		FD40F6771DD597B50038AC4A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		FD40F6781DD597B50038AC4A /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		FD40F6791DD597B50038AC4A /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +110,7 @@
 		FD40F63F1DD595A10038AC4A /* DPWebViewLocalCacheDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FD40F6731DD597B50038AC4A /* DPLocalCache_SDK */,
 				FD40F6431DD595A10038AC4A /* AppDelegate.h */,
 				FD40F6441DD595A10038AC4A /* AppDelegate.m */,
 				FD40F6461DD595A10038AC4A /* ViewController.h */,
@@ -138,6 +148,19 @@
 				FD40F6671DD595A10038AC4A /* Info.plist */,
 			);
 			path = DPWebViewLocalCacheDemoUITests;
+			sourceTree = "<group>";
+		};
+		FD40F6731DD597B50038AC4A /* DPLocalCache_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				FD40F6741DD597B50038AC4A /* DPLocalCache.h */,
+				FD40F6751DD597B50038AC4A /* DPLocalCache.m */,
+				FD40F6761DD597B50038AC4A /* Reachability.h */,
+				FD40F6771DD597B50038AC4A /* Reachability.m */,
+				FD40F6781DD597B50038AC4A /* Tool.h */,
+				FD40F6791DD597B50038AC4A /* Tool.m */,
+			);
+			path = DPLocalCache_SDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD40F67A1DD597B50038AC4A /* DPLocalCache.m in Sources */,
 				FD40F6481DD595A10038AC4A /* ViewController.m in Sources */,
 				FD40F6451DD595A10038AC4A /* AppDelegate.m in Sources */,
+				FD40F67C1DD597B50038AC4A /* Tool.m in Sources */,
 				FD40F6421DD595A10038AC4A /* main.m in Sources */,
+				FD40F67B1DD597B50038AC4A /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +533,7 @@
 				FD40F66C1DD595A10038AC4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FD40F66D1DD595A10038AC4A /* Build configuration list for PBXNativeTarget "DPWebViewLocalCacheDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +542,7 @@
 				FD40F66F1DD595A10038AC4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FD40F6701DD595A10038AC4A /* Build configuration list for PBXNativeTarget "DPWebViewLocalCacheDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +551,7 @@
 				FD40F6721DD595A10038AC4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

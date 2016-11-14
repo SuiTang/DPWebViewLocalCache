@@ -227,19 +227,19 @@
 #pragma mark 根据当前资源的网址，生成 当前资源 的本地存储子目录的文件名
 - (NSString *)cacheRequestFileName:(NSString *)requestUrl{
     //子目录名字转义
-    NSString *subPath = [Tool md5Hash:[Tool md5Hash:requestUrl]];
+    NSString *subPath = [DPLocalCacheTool md5Hash:[DPLocalCacheTool md5Hash:requestUrl]];
     //获得文件的后缀名（不带'.'）
     NSString *exestr = [requestUrl pathExtension];
     if (exestr.length > 0) {
         //处理文件，根据相对应的格式生成相对应文件名称
         subPath = [NSString stringWithFormat:@"%@.%@",subPath,exestr];
     }
-    //    NSLog(@"资源_子目录:%@",subPath);
+    NSLog(@"资源_子目录:%@",subPath);
     return subPath;
 }
 #pragma mark 根据当前资源的网址，生成 当前资源描述文件 的本地存储子目录的文件名
 - (NSString *)cacheRequestDescriptionFileName:(NSString *)requestUrl{
-    NSString *subPath = [Tool md5Hash:[NSString stringWithFormat:@"%@-otherInfo", requestUrl]];
+    NSString *subPath = [DPLocalCacheTool md5Hash:[NSString stringWithFormat:@"%@-otherInfo", requestUrl]];
     //    NSLog(@"资源_描述文件_子目录:%@",subPath);
     return subPath;
 }
@@ -250,43 +250,5 @@
 #pragma mark 当前代码只有替代品PNG图像
 - (NSString *)mimeTypeForPath:(NSString *)originalPath{
     return @"image/png";
-}
-
-#pragma mark <----------公共函数---------->
-#pragma mark 目录完整路径
-- (NSString*)subDirectoryFullPath{
-    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", self.diskPath, [self cacheFolder],_subDirectory];
-    return  path;
-}
-#pragma mark 获得磁盘缓存请求
-- (NSString*) getDiskCacheForRequest:(NSString *)request{
-    NSString *url = request;
-    NSString *fileName = [self cacheRequestFileName:url];
-    NSString *filePath = [self cacheFilePath:fileName];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:filePath]) {
-        return filePath;
-    }
-    else
-    {
-        return nil;
-    }
-}
-#pragma mark 手动添加本地缓存
-- (void)addLocalReourcePath:(NSString *)path request:(NSString *)request{
-    if ([self.localReourcePath objectForKey:request] != nil) {
-        return;
-    }
-    [self.localReourcePath setObject:path forKey:request];
-    return;
-}
-#pragma mark 不再使用系统的缓存，而是换到自定义缓存_传入自定义文件地址
--(void)changeToDownloadMode:(NSString *)downDir{
-    self.aMode = DOWNLOAD_MODE;
-    self.subDirectory = downDir;
-}
-#pragma mark 不再使用自定义缓存，而是换到系统的缓存
--(void) changeToNormalMode{
-    self.aMode = NORMAL_MODE;
 }
 @end

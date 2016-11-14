@@ -1,12 +1,14 @@
 //
-//  Tool.m
-//  ZhongCs3.0
+//  DPLocalCacheTool.m
+//  DPWebViewLocalCacheDemo
 //
-//  Created by ShaoHua Huang on 13-9-3.
-//  Copyright (c) 2013年 ShaoHua Huang. All rights reserved.
+//  Created by yupeng xia on 2016/11/14.
+//  Copyright © 2016年 yupeng xia. All rights reserved.
 //
-#import "Tool.h"
-@implementation Tool
+
+#import "DPLocalCacheTool.h"
+
+@implementation DPLocalCacheTool
 ///加密
 + (NSString *)md5Hash:(NSString *)str{
     const char *cStr = [str UTF8String];

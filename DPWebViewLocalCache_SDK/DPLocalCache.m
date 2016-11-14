@@ -10,6 +10,15 @@
 
 @implementation DPLocalCache
 - (id)initWithMemoryCapacity:(NSUInteger)memoryCapacity diskCapacity:(NSUInteger)diskCapacity diskPath:(NSString *)path cacheTime:(NSInteger)cacheTime modeTybe:(MODE_TYPE)aModeTybe subDirectory:(NSString*)subDirectory{
+    
+    //初始化一个应用缓存对象
+    /*
+     memoryCapacity 设置内存缓存容量
+     diskCapacity 设置磁盘缓存容量
+     path 磁盘缓存路径
+     内容缓存会在应用程序退出后 清空 磁盘缓存不会
+     */
+    
     if (self = [self initWithMemoryCapacity:memoryCapacity diskCapacity:diskCapacity diskPath:path]) {
         if (path){
             self.diskPath = path;
@@ -30,7 +39,7 @@
 }
 
 #pragma mark <----------重写NSURLCache函数---------->
-#pragma mark 缓存的响应请求 (如果对应的NSURLRequest没有cached的response那么返回nil)
+#pragma mark 取得某个请求的缓存
 - (NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request{
     NSString *url = request.URL.absoluteString;
     //    NSLog(@"normal mode:%@",[[request URL]absoluteString]);
@@ -174,7 +183,7 @@
     return cachedResponse;
 }
 
-#pragma mark 移除特定NSURLRequest的cache
+#pragma mark 清除某个请求的缓存
 - (void)removeCachedResponseForRequest:(NSURLRequest *)request{
     [super removeCachedResponseForRequest:request];
     //这句要不要需要测试一下
@@ -188,7 +197,7 @@
     [fileManager removeItemAtPath:otherInfoPath error:nil];
 }
 
-#pragma mark 移除所有的cache
+#pragma mark 清除所有的缓存
 - (void)removeAllCachedResponses{
     [super removeAllCachedResponses];
     

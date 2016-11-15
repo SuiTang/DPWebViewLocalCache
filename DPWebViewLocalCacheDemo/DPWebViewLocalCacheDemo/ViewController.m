@@ -16,8 +16,6 @@
 @property(nonatomic, strong) UIActivityIndicatorView* activityIndicatorView;
 @end
 
-static NSString *const VideoHandlerScheme = @"videohandler";
-
 @implementation ViewController
 #pragma mark <----------View LifeCycle---------->
 - (void)viewWillDisappear:(BOOL)animated{
@@ -48,24 +46,59 @@ static NSString *const VideoHandlerScheme = @"videohandler";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self createActivityIndicatorView];
+    
+    self.myWebView.delegate = self;
+    
     DPLocalCache *urlCache = [[DPLocalCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
                                                              diskCapacity:200 * 1024 * 1024
                                                                  diskPath:nil
-                                                                cacheTime:0
+                                                                cacheTime:60*60*24  //每隔24小时更新一次数据
                                                                  modeTybe:DOWNLOAD_MODE
                                                              subDirectory:@"dir"];
     [NSURLCache setSharedURLCache:urlCache];
     
-    [self createActivityIndicatorView];
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+    if (internetStatus != NotReachable) {//网络不可用，使用本地缓存
+        [self.myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://github.com/xiayuqingfeng/DPWebViewLocalCache"]]];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        BOOL firstStart = [userDefaults boolForKey:@"firstStart"];
+        if (!firstStart) {
+            [userDefaults setBool:YES forKey:@"firstStart"];
+            
+            // 延迟执行：
+            double delayInSeconds = 0.5;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"操作提示" message:@"网页加载完成->断网->重新打开客户端" preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // 创建按钮
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
+                [alertController addAction:okAction];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+            });
+        }
+    }else{
+        // 延迟执行：
+        double delayInSeconds = 0.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"没有网络，浏览器使用本地网页缓存数据……" preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // 创建按钮
+            __block typeof(self) bself = self;
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+                [bself.myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://github.com/xiayuqingfeng/DPWebViewLocalCache"]]];
+            }];
+            [alertController addAction:okAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
+    }
     
-    self.myWebView.delegate = self;
-    [self.myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
-}
-
-- (void)didEnterFullScreen:(id)sender{
-
-}
-- (void)didExitFullScreen:(id)sender{
     
 }
 
@@ -74,11 +107,6 @@ static NSString *const VideoHandlerScheme = @"videohandler";
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     //显示网页加载"Loading框"和"状态栏的网络活动标志"
     [self webViewStartLoading];
-    
-    if ([request.URL.scheme isEqualToString:VideoHandlerScheme]) {
-        NSLog(@"%@", request.URL);//在这里可以获得事件
-        return NO;
-    }
     return YES;
 }
 
@@ -90,14 +118,6 @@ static NSString *const VideoHandlerScheme = @"videohandler";
 - (void)webViewDidFinishLoad:(UIWebView *) webView{
     //隐藏网页加载"Loading框"和"状态栏的网络活动标志"
     [self webViewStopLoading];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"video" ofType:@"js"];
-    NSString *videoHandlerString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    
-    
-    if (videoHandlerString) {
-        [webView stringByEvaluatingJavaScriptFromString:videoHandlerString];
-    }
 }
 //加载失败与错误
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{

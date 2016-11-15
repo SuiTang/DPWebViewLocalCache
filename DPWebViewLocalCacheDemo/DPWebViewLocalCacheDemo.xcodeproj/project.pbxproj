@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FD03EE4F1DDAD996002694AB /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = FD03EE4E1DDAD996002694AB /* Launch.png */; };
+		FD03EE521DDAF579002694AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD03EE511DDAF579002694AB /* UIKit.framework */; };
+		FD03EE541DDAF581002694AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD03EE531DDAF581002694AB /* Foundation.framework */; };
+		FD03EE561DDAF58D002694AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD03EE551DDAF58D002694AB /* CoreGraphics.framework */; };
 		FD40F6421DD595A10038AC4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F6411DD595A10038AC4A /* main.m */; };
 		FD40F6451DD595A10038AC4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F6441DD595A10038AC4A /* AppDelegate.m */; };
 		FD40F6481DD595A10038AC4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD40F6471DD595A10038AC4A /* ViewController.m */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		FD03EE4E1DDAD996002694AB /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
+		FD03EE511DDAF579002694AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FD03EE531DDAF581002694AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FD03EE551DDAF58D002694AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FD40F63D1DD595A10038AC4A /* DPWebViewLocalCacheDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPWebViewLocalCacheDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD40F6411DD595A10038AC4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FD40F6431DD595A10038AC4A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD03EE561DDAF58D002694AB /* CoreGraphics.framework in Frameworks */,
+				FD03EE541DDAF581002694AB /* Foundation.framework in Frameworks */,
+				FD03EE521DDAF579002694AB /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,9 +106,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FD03EE501DDAF564002694AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD03EE551DDAF58D002694AB /* CoreGraphics.framework */,
+				FD03EE531DDAF581002694AB /* Foundation.framework */,
+				FD03EE511DDAF579002694AB /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FD40F6341DD595A10038AC4A = {
 			isa = PBXGroup;
 			children = (
+				FD03EE501DDAF564002694AB /* Frameworks */,
 				FD40F63F1DD595A10038AC4A /* DPWebViewLocalCacheDemo */,
 				FD40F6591DD595A10038AC4A /* DPWebViewLocalCacheDemoTests */,
 				FD40F6641DD595A10038AC4A /* DPWebViewLocalCacheDemoUITests */,

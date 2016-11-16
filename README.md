@@ -23,7 +23,7 @@
 
 ## Getting Started
 - Read this Readme doc
-- Read the [How to use section](https://github.com/rs/DPWebViewLocalCache#how-to-use)
+- Read the [How to use section](https://github.com/xiayuqingfeng/DPWebViewLocalCache#how-to-use)
 - Read the [documentation @ CocoaDocs](http://cocoadocs.org/docsets/DPWebViewLocalCache/)
 - Try the example by downloading the project from Github or even easier using CocoaPods try `pod try DPWebViewLocalCache`
 - Get to the [installation steps](https://github.com/rs/DPWebViewLocalCache#installation)

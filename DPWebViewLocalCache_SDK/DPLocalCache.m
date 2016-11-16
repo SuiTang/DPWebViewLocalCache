@@ -194,7 +194,6 @@
 #pragma mark 移除所有的cache
 - (void)removeAllCachedResponses{
     [super removeAllCachedResponses];
-    [self deleteCacheFolder];
 }
 
 #pragma mark <----------缓存使用过程中的处理---------->

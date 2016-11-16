@@ -25,4 +25,6 @@ typedef enum : NSUInteger{
 
 ///初始缓存存储本地空间
 - (id)initWithMemoryCapacity:(NSUInteger)memoryCapacity diskCapacity:(NSUInteger)diskCapacity diskPath:(NSString *)path cacheTime:(NSInteger)cacheTime modeTybe:(MODE_TYPE)aModeTybe subDirectory:(NSString*)subDirectory;
+///删除缓存文件夹
+- (void)deleteCacheFolder;
 @end

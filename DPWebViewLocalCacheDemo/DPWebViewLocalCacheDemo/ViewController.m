@@ -39,7 +39,7 @@
     // Dispose of any resources that can be recreated.
     
     DPLocalCache *urlCache = (DPLocalCache *)[NSURLCache sharedURLCache];
-    [urlCache removeAllCachedResponses];
+    [urlCache deleteCacheFolder];
 }
 
 - (void)viewDidLoad {

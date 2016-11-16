@@ -1,5 +1,5 @@
 <p align="center" >
-<img src="DPWebViewLocalCacheDemo.gif" title="SDWebImage logo" float=left>
+<img src="header.png" title="DPWebViewLocalCache logo" float=left>
 </p>
 
 ## Features
@@ -99,8 +99,8 @@ community can help you solve it.
 
 All source code is licensed under the [MIT License](https://github.com/xiayuqingfeng/DPWebViewLocalCache/blob/master/LICENSE).
 
-## Architecture
+## Pictures show
 
 <p align="center" >
-<img src="DPWebViewLocalCacheDemo－21.png" title="SDWebImage sequence diagram">
+<img src="DPWebViewLocalCacheDemo.gif" title="DPWebViewLocalCache sequence diagram">
 </p>

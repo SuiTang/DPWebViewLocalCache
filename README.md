@@ -54,7 +54,6 @@ Objective-C:
                                                                 cacheTime:60*60*24
                                                                  modeTybe:DOWNLOAD_MODE
                                                              subDirectory:@"PXPT"];
-    urlCache.keyArray = @[@"sessionId"];
     [NSURLCache setSharedURLCache:urlCache];
 }
 - (void)didReceiveMemoryWarning{

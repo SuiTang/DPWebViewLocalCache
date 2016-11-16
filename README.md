@@ -5,9 +5,9 @@
 ## Features
 
 - [x] Categories for `UIWebView`, `MKWebview`, adding cache management
-- [x] An asynchronous image downloader
-- [x] An asynchronous memory + disk image caching with automatic cache expiration handling
-- [x] A background image decompression
+- [x] An asynchronous cache downloader
+- [x] An asynchronous memory + disk cache caching with automatic cache expiration handling
+- [x] A background cache decompression
 - [x] A guarantee that the same URL won't be downloaded several times
 - [x] A guarantee that bogus URLs won't be retried again and again
 - [x] A guarantee that main thread will never be blocked
@@ -29,7 +29,7 @@
 - Get to the [installation steps](https://github.com/rs/DPWebViewLocalCache#installation)
 
 ## Who Uses It
-- Find out [who uses DPWebViewLocalCache](https://github.com/xiayuqingfeng/DPWebViewLocalCache/wiki/Who-Uses-SDWebImage) and add your app to the list.
+- Find out [who uses DPWebViewLocalCache](https://github.com/xiayuqingfeng/DPWebViewLocalCache/wiki/Who-Uses-DPWebViewLocalCache) and add your app to the list.
 
 ## Communication
 - If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/DPWebViewLocalCache). (Tag 'DPWebViewLocalCache')
@@ -72,7 +72,7 @@ Objective-C:
 Installation
 ------------
 
-There are three ways to use SDWebImage in your project:
+There are three ways to use DPWebViewLocalCache in your project:
 - using CocoaPods
 - using Carthage
 - by cloning the project into your repository

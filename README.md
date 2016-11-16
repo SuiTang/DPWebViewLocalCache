@@ -62,7 +62,7 @@ Objective-C:
 
     //Any place to add only once!!!
     DPLocalCache *urlCache = (DPLocalCache *)[NSURLCache sharedURLCache];
-    [urlCache removeAllCachedResponses];
+    [urlCache deleteCacheFolder];
 }
 ...
 

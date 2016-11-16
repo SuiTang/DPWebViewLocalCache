@@ -38,8 +38,6 @@
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
-## Installation
-
 ## How To Use
 
 ```objective-c
@@ -47,15 +45,28 @@ Objective-C:
 
 #import #import <DPLocalCache.h>
 ...
-//添加浏览器本地缓存处理
-DPLocalCache *urlCache = [[DPLocalCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
-                                                         diskCapacity:200 * 1024 * 1024
-                                                             diskPath:nil
-                                                            cacheTime:60*60*24
-                                                             modeTybe:DOWNLOAD_MODE
-                                                         subDirectory:@"PXPT"];
-urlCache.keyArray = @[@"sessionId"];
-[NSURLCache setSharedURLCache:urlCache];
+- (void)viewDidLoad {
+    //Any place to add only once!!!
+    //添加浏览器本地缓存处理
+    DPLocalCache *urlCache = [[DPLocalCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
+                                                             diskCapacity:200 * 1024 * 1024
+                                                                 diskPath:nil
+                                                                cacheTime:60*60*24
+                                                                 modeTybe:DOWNLOAD_MODE
+                                                             subDirectory:@"PXPT"];
+    urlCache.keyArray = @[@"sessionId"];
+    [NSURLCache setSharedURLCache:urlCache];
+}
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+
+    //Any place to add only once!!!
+    DPLocalCache *urlCache = (DPLocalCache *)[NSURLCache sharedURLCache];
+    [urlCache removeAllCachedResponses];
+}
+...
+
 ```
 - For details about how to use the library and clear examples, see [The detailed How to use](Docs/HowToUse.md)
 

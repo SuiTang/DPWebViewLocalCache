@@ -68,7 +68,6 @@ Objective-C:
 ...
 
 ```
-- For details about how to use the library and clear examples, see [The detailed How to use](Docs/HowToUse.md)
 
 Installation
 ------------
@@ -95,23 +94,16 @@ use_frameworks!
 ```
 
 ### Build Project
-
 At this point your workspace should build without error. If you are having problem, post to the Issue and the
 community can help you solve it.
 
-## Author
-- [Olivier Poitrey](https://github.com/rs)
-
 ## Collaborators
-- [Konstantinos K.](https://github.com/mythodeia)
-- [Bogdan Poplauschi](https://github.com/bpoplauschi)
+- [PingshengZhao](https://github.com/PingshengZhao)
 
 ## Licenses
-
 All source code is licensed under the [MIT License](https://github.com/xiayuqingfeng/DPWebViewLocalCache/blob/master/LICENSE).
 
 ## Pictures show
-
 <p align="center" >
 <img src="DPWebViewLocalCacheDemo.gif" title="DPWebViewLocalCache sequence diagram">
 </p>
